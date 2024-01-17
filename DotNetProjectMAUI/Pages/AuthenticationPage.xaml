@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DotNetProjectMAUI.Pages.AuthenticationPage"
+             Title="Login">
+    <VerticalStackLayout VerticalOptions="Center"
+                         Padding="20">
+        <Entry x:Name="EmailInput" Placeholder="Email" TextChanged="EmailInputTextChanged"/>
+        <Entry x:Name="PasswordInput" Placeholder="Password" IsPassword="True" TextChanged="PasswordInputTextChanged"/>
+
+        <VerticalStackLayout HorizontalOptions="Center" Padding="20">
+            <Label x:Name="InvalidCredentialsError" Text="Invalid email or password !" TextColor="Red" IsVisible="False"/>
+
+            <Button x:Name="LoginButton" Text="Login" IsEnabled="False" Margin="10" Clicked="LoginButtonClicked"/>
+        </VerticalStackLayout>
+
+        
+    </VerticalStackLayout>
+</ContentPage>
