@@ -19,7 +19,7 @@ public partial class ParksPage : ContentPage
 
         if (userParks != null && userParks?.Count() != 0)
         {
-            foreach (UserPark userPark in userParks)
+            foreach (UserPark userPark in userParks!)
             {
                 HttpResponseMessage parkHttpResponseMessage = httpClient.GetAsync($"http://10.0.2.2:5250/api/park/{userPark.park_id}").Result;
                 Park? park = parkHttpResponseMessage.Content.ReadFromJsonAsync<Park>().Result;

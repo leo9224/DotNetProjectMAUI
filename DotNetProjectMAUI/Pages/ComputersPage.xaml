@@ -9,7 +9,10 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Label Text="{Binding name}"/>
+                        <StackLayout>
+                            <Label Text="{Binding name}"/>
+                            <Label Text="{Binding os, StringFormat='OS: {0}'}"/>
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
