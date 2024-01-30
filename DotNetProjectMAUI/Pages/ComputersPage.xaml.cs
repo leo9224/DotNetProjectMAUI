@@ -1,7 +1,6 @@
-using DotNetProjectAPI.Models;
-using DotNetProjectMAUI.Models;
 using System.Net.Http.Json;
-using Type = DotNetProjectAPI.Models.Type;
+using DotNetProjectMAUI.Models;
+using Type = DotNetProjectLibrary.Models.Type;
 
 namespace DotNetProjectMAUI.Pages;
 
@@ -11,19 +10,19 @@ public partial class ComputersPage : ContentPage
 	{
         HttpClient httpClient = new HttpClient();
         //httpClient.DefaultRequestHeaders.Add("Authorization", Token);
-        HttpResponseMessage httpResponseMessage = httpClient.GetAsync($"http://10.0.2.2:5250/api/computer/get_by_room/{roomId}").Result;
+        HttpResponseMessage httpResponseMessage = httpClient.GetAsync($"{Config.APIEndpoint}/api/computer/get_by_room/{roomId}").Result;
 
-        IEnumerable<Computer>? computers = httpResponseMessage.Content.ReadFromJsonAsync<IEnumerable<Computer>>().Result;
+        IEnumerable<CustomComputer>? computers = httpResponseMessage.Content.ReadFromJsonAsync<IEnumerable<CustomComputer>>().Result;
 
         if (computers is not null)
         {
-            foreach (Computer computer in computers)
+            foreach (CustomComputer computer in computers)
             {
                 int? typeId = computer.type_id;
 
                 if (typeId is not null)
                 {
-                    HttpResponseMessage httpResponseMessageForType = httpClient.GetAsync($"http://10.0.2.2:5250/api/type/{typeId}").Result;
+                    HttpResponseMessage httpResponseMessageForType = httpClient.GetAsync($"{Config.APIEndpoint}/api/type/{typeId}").Result;
                     Type? type = httpResponseMessageForType.Content.ReadFromJsonAsync<Type>().Result;
 
                     if (type is not null)

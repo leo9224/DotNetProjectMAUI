@@ -1,5 +1,4 @@
-using System.Text.Json.Nodes;
-using Newtonsoft.Json;
+using DotNetProjectLibrary.Authentication;
 using Newtonsoft.Json.Linq;
 
 namespace DotNetProjectMAUI.Pages;
@@ -13,8 +12,9 @@ public partial class AuthenticationPage : ContentPage
 
     private async void LoginButtonClicked(object sender, EventArgs e)
     {
+        Console.WriteLine($"{Config.APIEndpoint}/api/authentication/{EmailInput.Text}/{PasswordInput.Text}");
         HttpClient httpClient = new HttpClient();
-		HttpResponseMessage httpResponseMessage = await httpClient.GetAsync($"http://10.0.2.2:5250/api/authentication/{EmailInput.Text}/{PasswordInput.Text}");
+		HttpResponseMessage httpResponseMessage = await httpClient.GetAsync($"{Config.APIEndpoint}/api/authentication/{EmailInput.Text}/{PasswordInput.Text}");
         
         if (httpResponseMessage.IsSuccessStatusCode)
         {
@@ -46,17 +46,13 @@ public partial class AuthenticationPage : ContentPage
 
 	private void CheckLoginInputs()
 	{
-        if (EmailInput.Text != null && EmailInput.Text != string.Empty)
+        if (Authentication.CheckValidEmail(EmailInput.Text) && Authentication.CheckValidPassword(PasswordInput.Text))
         {
-            if (PasswordInput.Text != null && PasswordInput.Text != string.Empty)
-            {
-                LoginButton.IsEnabled = true;
-                return;
-            }
-
+            LoginButton.IsEnabled = true;
+        }
+        else
+        {
             LoginButton.IsEnabled = false;
         }
-
-        LoginButton.IsEnabled = false;
     }
 }

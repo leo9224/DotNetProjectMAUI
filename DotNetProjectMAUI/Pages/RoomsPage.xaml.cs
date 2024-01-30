@@ -1,5 +1,5 @@
-using DotNetProjectMAUI.Models;
 using System.Net.Http.Json;
+using DotNetProjectLibrary.Models;
 
 namespace DotNetProjectMAUI.Pages;
 
@@ -9,7 +9,7 @@ public partial class RoomsPage : ContentPage
 	{
         HttpClient httpClient = new HttpClient();
         //httpClient.DefaultRequestHeaders.Add("Authorization", Token);
-        HttpResponseMessage httpResponseMessage = httpClient.GetAsync($"http://10.0.2.2:5250/api/room/get_by_park/{parkId}").Result;
+        HttpResponseMessage httpResponseMessage = httpClient.GetAsync($"{Config.APIEndpoint}/api/room/get_by_park/{parkId}").Result;
 
         IEnumerable<Room>? rooms = httpResponseMessage.Content.ReadFromJsonAsync<IEnumerable<Room>>().Result;
 

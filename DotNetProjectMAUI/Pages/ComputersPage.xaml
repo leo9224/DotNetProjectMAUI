@@ -5,13 +5,15 @@
              Title="Computers">
 
     <ScrollView>
-        <ListView Margin="20" x:Name="ComputerList">
+        <ListView Margin="20" x:Name="ComputerList" RowHeight="100">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <StackLayout>
+                    <ViewCell Height="100">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand">
                             <Label Text="{Binding name}"/>
                             <Label Text="{Binding os, StringFormat='OS: {0}'}"/>
+                            <Label Text="{Binding os, StringFormat='Version: {0}'}"/>
+                            <Label Text="{Binding os, StringFormat='Status: {0}'}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

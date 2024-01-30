@@ -68,6 +68,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Reference Include="DotNetProjectLibrary">
+	    <HintPath>..\..\DotNetProjectLibrary\DotNetProjectLibrary\bin\Release\net8.0\DotNetProjectLibrary.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Pages\AuthenticationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
