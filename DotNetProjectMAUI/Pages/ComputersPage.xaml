@@ -12,8 +12,8 @@
                         <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand">
                             <Label Text="{Binding name}"/>
                             <Label Text="{Binding os, StringFormat='OS: {0}'}"/>
-                            <Label Text="{Binding os, StringFormat='Version: {0}'}"/>
-                            <Label Text="{Binding os, StringFormat='Status: {0}'}"/>
+                            <Label Text="{Binding os_version, StringFormat='Version: {0}'}"/>
+                            <Label Text="{Binding status, StringFormat='Status: {0}'}"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

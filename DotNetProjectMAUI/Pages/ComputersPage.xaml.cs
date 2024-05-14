@@ -1,4 +1,5 @@
 using System.Net.Http.Json;
+using DotNetProjectLibrary.Models;
 using DotNetProjectMAUI.Models;
 using Type = DotNetProjectLibrary.Models.Type;
 
@@ -12,15 +13,15 @@ public partial class ComputersPage : ContentPage
         //httpClient.DefaultRequestHeaders.Add("Authorization", Token);
         HttpResponseMessage httpResponseMessage = httpClient.GetAsync($"{Config.APIEndpoint}/api/computer/get_by_room/{roomId}").Result;
 
-        IEnumerable<CustomComputer>? computers = httpResponseMessage.Content.ReadFromJsonAsync<IEnumerable<CustomComputer>>().Result;
+        IEnumerable<Computer>? computers = httpResponseMessage.Content.ReadFromJsonAsync<IEnumerable<Computer>>().Result;
 
         if (computers is not null)
         {
-            foreach (CustomComputer computer in computers)
+            foreach (Computer computer in computers)
             {
                 int? typeId = computer.type_id;
 
-                if (typeId is not null)
+                /*if (typeId is not null)
                 {
                     HttpResponseMessage httpResponseMessageForType = httpClient.GetAsync($"{Config.APIEndpoint}/api/type/{typeId}").Result;
                     Type? type = httpResponseMessageForType.Content.ReadFromJsonAsync<Type>().Result;
@@ -33,7 +34,7 @@ public partial class ComputersPage : ContentPage
                 else
                 {
                     computer.os = "Unknown";
-                }
+                }*/
             }
         }
 
