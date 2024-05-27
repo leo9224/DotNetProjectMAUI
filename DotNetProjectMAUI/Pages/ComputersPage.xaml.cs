@@ -7,10 +7,14 @@ namespace DotNetProjectMAUI.Pages;
 
 public partial class ComputersPage : ContentPage
 {
-	public ComputersPage(int roomId)
+    string Token;
+
+	public ComputersPage(int roomId, string token)
 	{
+        Token = token;
+
         HttpClient httpClient = new HttpClient();
-        //httpClient.DefaultRequestHeaders.Add("Authorization", Token);
+        httpClient.DefaultRequestHeaders.Add("Authorization", Token);
         HttpResponseMessage httpResponseMessage = httpClient.GetAsync($"{Config.APIEndpoint}/api/computer/get_by_room/{roomId}").Result;
 
         IEnumerable<Computer>? computers = httpResponseMessage.Content.ReadFromJsonAsync<IEnumerable<Computer>>().Result;

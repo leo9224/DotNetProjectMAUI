@@ -5,10 +5,14 @@ namespace DotNetProjectMAUI.Pages;
 
 public partial class RoomsPage : ContentPage
 {
-	public RoomsPage(int parkId)
+    string Token;
+
+	public RoomsPage(int parkId, string token)
 	{
+        Token = token;
+
         HttpClient httpClient = new HttpClient();
-        //httpClient.DefaultRequestHeaders.Add("Authorization", Token);
+        httpClient.DefaultRequestHeaders.Add("Authorization", Token);
         HttpResponseMessage httpResponseMessage = httpClient.GetAsync($"{Config.APIEndpoint}/api/room/get_by_park/{parkId}").Result;
 
         IEnumerable<Room>? rooms = httpResponseMessage.Content.ReadFromJsonAsync<IEnumerable<Room>>().Result;
@@ -27,6 +31,6 @@ public partial class RoomsPage : ContentPage
 
         int roomId = (int)button.CommandParameter;
 
-        await Navigation.PushAsync(new ComputersPage(roomId));
+        await Navigation.PushAsync(new ComputersPage(roomId, Token));
     }
 }

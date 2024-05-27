@@ -24,9 +24,7 @@ public partial class AuthenticationPage : ContentPage
             string token = $"Bearer {jsonResponse.GetValue("token")}";
             int userId = jsonResponse.GetValue("user_id")!.ToObject<int>();
 
-            await DisplayAlert("Login", token, "Ok");
-
-            await Navigation.PushAsync(new ParksPage(userId));
+            await Navigation.PushAsync(new ParksPage(userId, token));
         }
         else
         {
