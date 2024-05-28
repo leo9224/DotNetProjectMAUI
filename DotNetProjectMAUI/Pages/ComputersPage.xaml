@@ -2,23 +2,44 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DotNetProjectMAUI.Pages.ComputersPage"
-             Title="Computers">
+             Title="Computers"
+             Background="{StaticResource Primary}"
+             Shell.BackgroundColor="{StaticResource Secondary}">
 
-    <ScrollView>
-        <ListView Margin="20" x:Name="ComputerList" RowHeight="100">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell Height="100">
-                        <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-                            <Label Text="{Binding name}"/>
-                            <Label Text="{Binding os, StringFormat='OS: {0}'}"/>
-                            <Label Text="{Binding os_version, StringFormat='Version: {0}'}"/>
-                            <Label Text="{Binding status, StringFormat='Status: {0}'}"/>
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Label Text="Computers"
+                   FontFamily="Strande2"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   VerticalTextAlignment="Center"
+                   VerticalOptions="Center"
+                   FontSize="Medium" /> 
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+
+    <ListView x:Name="ComputerList" HasUnevenRows="True" SeparatorVisibility="None" SelectionMode="None" Margin="10">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell Height="100">
+                    <Frame CornerRadius="5"
+                            Padding="0"
+                            Margin="10"
+                            Background="{StaticResource Secondary}"
+                            BorderColor="{StaticResource Secondary}">
+
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Background="{StaticResource Secondary}" Padding="10">
+                            <Label Text="{Binding name}" TextColor="White"/>
+                            <Label Text="{Binding os, StringFormat='OS: {0}'}" TextColor="White"/>
+                            <Label Text="{Binding os_version, StringFormat='Version: {0}'}" TextColor="White"/>
+                            <Label Text="{Binding status, StringFormat='Status: {0}'}" TextColor="White"/>
                         </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </ScrollView>
-    
+
+                    </Frame>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
 </ContentPage>

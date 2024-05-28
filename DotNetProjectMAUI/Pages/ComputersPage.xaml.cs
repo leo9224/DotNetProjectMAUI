@@ -1,6 +1,5 @@
 using System.Net.Http.Json;
 using DotNetProjectLibrary.Models;
-using DotNetProjectMAUI.Models;
 using Type = DotNetProjectLibrary.Models.Type;
 
 namespace DotNetProjectMAUI.Pages;

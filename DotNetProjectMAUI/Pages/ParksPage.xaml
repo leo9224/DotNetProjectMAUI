@@ -2,18 +2,36 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DotNetProjectMAUI.Pages.ParksPage"
-             Title="Parks">
+             Title="Parks"
+             Background="{StaticResource Primary}"
+             Shell.BackgroundColor="{StaticResource Secondary}">
 
-    <ScrollView>
-        <ListView Margin="20" x:Name="ParkList">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Button Text="{Binding name}" CommandParameter="{Binding id}" Clicked="ParkButtonClicked"/>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </ScrollView>
-    
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior  IsVisible="False"/>
+    </Shell.BackButtonBehavior>
+
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Label Text="Parks"
+                   FontFamily="Strande2"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   VerticalTextAlignment="Center"
+                   VerticalOptions="Center"
+                   FontSize="Medium" />
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <ListView x:Name="ParkList" SeparatorVisibility="None" HasUnevenRows="True" SelectionMode="None" Margin="10">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout  Margin="10">
+                        <Button Text="{Binding name}" CommandParameter="{Binding id}" Clicked="ParkButtonClicked" Background="{StaticResource Secondary}"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
 </ContentPage>

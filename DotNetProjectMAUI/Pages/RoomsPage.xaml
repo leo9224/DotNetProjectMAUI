@@ -2,18 +2,32 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DotNetProjectMAUI.Pages.RoomsPage"
-             Title="Rooms">
+             Title="Rooms"
+             Background="{StaticResource Primary}"
+             Shell.BackgroundColor="{StaticResource Secondary}">
 
-    <ScrollView>
-        <ListView Margin="20" x:Name="RoomList">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Button Text="{Binding name}" CommandParameter="{Binding id}" Clicked="RoomButtonClicked"/>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </ScrollView>
-    
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Fill">
+            <Label Text="Rooms"
+                   FontFamily="Strande2"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   VerticalTextAlignment="Center"
+                   VerticalOptions="Center"
+                   FontSize="Medium" />
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <ListView x:Name="RoomList" SeparatorVisibility="None" HasUnevenRows="True" SelectionMode="None" Margin="10">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Margin="10">
+                        <Button Text="{Binding name}" CommandParameter="{Binding id}" Clicked="RoomButtonClicked"  Background="{StaticResource Secondary}"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
 </ContentPage>
