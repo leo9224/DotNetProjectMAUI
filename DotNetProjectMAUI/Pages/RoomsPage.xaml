@@ -18,16 +18,20 @@
         </HorizontalStackLayout>
     </Shell.TitleView>
 
-    <ListView x:Name="RoomList" SeparatorVisibility="None" HasUnevenRows="True" SelectionMode="None" Margin="10">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Margin="10">
-                        <Button Text="{Binding name}" CommandParameter="{Binding id}" Clicked="RoomButtonClicked"  Background="{StaticResource Secondary}"/>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-
+    <StackLayout HorizontalOptions="Center">
+        <Label x:Name="NoItemLabel" Text="No room in this park" TextColor="White" IsVisible="False" Margin="20"/>
+        
+        <ListView x:Name="RoomList" SeparatorVisibility="None" HasUnevenRows="True" SelectionMode="None" Margin="10" IsVisible="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Margin="10">
+                            <Button Text="{Binding name}" CommandParameter="{Binding id}" Clicked="RoomButtonClicked"  Background="{StaticResource Secondary}"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+    
 </ContentPage>

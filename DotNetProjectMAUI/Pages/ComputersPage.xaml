@@ -18,28 +18,31 @@
         </HorizontalStackLayout>
     </Shell.TitleView>
 
+    <StackLayout HorizontalOptions="Center">
+        <Label x:Name="NoItemLabel" Text="No computer in this room" TextColor="White" IsVisible="False" Margin="20"/>
 
-    <ListView x:Name="ComputerList" HasUnevenRows="True" SeparatorVisibility="None" SelectionMode="None" Margin="10">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell Height="100">
-                    <Frame CornerRadius="5"
+        <ListView x:Name="ComputerList" HasUnevenRows="True" SeparatorVisibility="None" SelectionMode="None" Margin="10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Height="100">
+                        <Frame CornerRadius="5"
                             Padding="0"
                             Margin="10"
                             Background="{StaticResource Secondary}"
                             BorderColor="{StaticResource Secondary}">
 
-                        <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Background="{StaticResource Secondary}" Padding="10">
-                            <Label Text="{Binding name}" TextColor="White"/>
-                            <Label Text="{Binding os, StringFormat='OS: {0}'}" TextColor="White"/>
-                            <Label Text="{Binding os_version, StringFormat='Version: {0}'}" TextColor="White"/>
-                            <Label Text="{Binding status, StringFormat='Status: {0}'}" TextColor="White"/>
-                        </StackLayout>
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Background="{StaticResource Secondary}" Padding="10">
+                                <Label Text="{Binding name}" TextColor="White"/>
+                                <Label Text="{Binding os, StringFormat='OS: {0}'}" TextColor="White"/>
+                                <Label Text="{Binding os_version, StringFormat='Version: {0}'}" TextColor="White"/>
+                                <Label Text="{Binding status, StringFormat='Status: {0}'}" TextColor="White"/>
+                            </StackLayout>
 
-                    </Frame>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 
 </ContentPage>

@@ -36,6 +36,11 @@ public partial class ParksPage : ContentPage
 
             ParkList.ItemsSource = parks;
         }
+        else
+        {
+            ParkList.IsVisible = false;
+            NoItemLabel.IsVisible = true;
+        }
     }
 
     private async void ParkButtonClicked(object sender, EventArgs e)

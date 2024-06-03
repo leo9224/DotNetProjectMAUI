@@ -23,6 +23,11 @@ public partial class RoomsPage : ContentPage
         {
             RoomList.ItemsSource = rooms;
         }
+        else
+        {
+            RoomList.IsVisible = false;
+            NoItemLabel.IsVisible = true;
+        }
     }
 
     private async void RoomButtonClicked(object sender, EventArgs e)

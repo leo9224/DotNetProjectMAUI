@@ -18,7 +18,7 @@ public partial class ComputersPage : ContentPage
 
         IEnumerable<Computer>? computers = httpResponseMessage.Content.ReadFromJsonAsync<IEnumerable<Computer>>().Result;
 
-        if (computers is not null)
+        if (computers != null && computers?.Count() != 0)
         {
             foreach (Computer computer in computers)
             {
@@ -39,6 +39,11 @@ public partial class ComputersPage : ContentPage
                     computer.os = "Unknown";
                 }*/
             }
+        }
+        else
+        {
+            ComputerList.IsVisible = false;
+            NoItemLabel.IsVisible = true;
         }
 
         InitializeComponent();
