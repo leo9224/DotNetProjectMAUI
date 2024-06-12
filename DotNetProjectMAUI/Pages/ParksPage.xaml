@@ -30,7 +30,14 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout  Margin="10">
-                            <Button Text="{Binding name}" CommandParameter="{Binding id}" Clicked="ParkButtonClicked" Background="{StaticResource Secondary}"/>
+                            <Button CommandParameter="{Binding id}" Clicked="ParkButtonClicked" Background="{StaticResource Secondary}">
+                                <Button.Text>
+                                    <MultiBinding StringFormat="{}{0} ({1})">
+                                        <Binding Path="name" />
+                                        <Binding Path="id" />
+                                    </MultiBinding>
+                                </Button.Text>
+                            </Button>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

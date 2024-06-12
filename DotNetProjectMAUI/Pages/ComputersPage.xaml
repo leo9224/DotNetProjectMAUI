@@ -32,7 +32,10 @@
                             BorderColor="{StaticResource Secondary}">
 
                             <StackLayout VerticalOptions="Center" HorizontalOptions="FillAndExpand" Background="{StaticResource Secondary}" Padding="10">
-                                <Label Text="{Binding name}" TextColor="White"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding name}" TextColor="White"/>
+                                    <Label Text="{Binding id, StringFormat=' ({0})'}" TextColor="White"/>
+                                </StackLayout>
                                 <Label Text="{Binding os, StringFormat='OS: {0}'}" TextColor="White"/>
                                 <Label Text="{Binding os_version, StringFormat='Version: {0}'}" TextColor="White"/>
                                 <Label Text="{Binding status, StringFormat='Status: {0}'}" TextColor="White"/>

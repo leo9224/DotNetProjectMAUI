@@ -23,21 +23,6 @@ public partial class ComputersPage : ContentPage
             foreach (Computer computer in computers)
             {
                 int? typeId = computer.type_id;
-
-                /*if (typeId is not null)
-                {
-                    HttpResponseMessage httpResponseMessageForType = httpClient.GetAsync($"{Config.APIEndpoint}/api/type/{typeId}").Result;
-                    Type? type = httpResponseMessageForType.Content.ReadFromJsonAsync<Type>().Result;
-
-                    if (type is not null)
-                    {
-                        computer.os = type.description;
-                    }
-                }
-                else
-                {
-                    computer.os = "Unknown";
-                }*/
             }
         }
         else
